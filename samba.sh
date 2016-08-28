@@ -10,7 +10,7 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: David Personette (dperson@gmail.com),
+#        AUTHOR: David Personette (dperson@gmail.com), erikpb
 #  ORGANIZATION:
 #       CREATED: 09/28/2014 12:11
 #      REVISION: 1.0
@@ -88,9 +88,14 @@ timezone() { local timezone="${1:-EST5EDT}"
 # Arguments:
 #   name) for user
 #   password) for user
+#	id) for user
 # Return: user added to container
-user() { local name="${1}" passwd="${2}"
-    useradd "$name" -M
+user() { local name="${1}" passwd="${2}" id=${3:-""}
+	if [[ ${id:-""} ]]; then
+    	useradd "$name" -M -g users -u $id
+	else
+    	useradd "$name" -M -g users
+    fi	
     echo "$passwd" | tee - | smbpasswd -s -a "$name"
 }
 

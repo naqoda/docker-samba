@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER David Personette <dperson@gmail.com>
+MAINTAINER Naqoda <info@naqoda.com>
 
 # Install samba
 RUN export DEBIAN_FRONTEND='noninteractive' && \
@@ -14,7 +14,6 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     echo '   directory mask = 0775' >>/etc/samba/smb.conf && \
     echo '   force create mode = 0664' >>/etc/samba/smb.conf && \
     echo '   force directory mode = 0775' >>/etc/samba/smb.conf && \
-    echo '   force user = smbuser' >>/etc/samba/smb.conf && \
     echo '   force group = users' >>/etc/samba/smb.conf && \
     echo '   load printers = no' >>/etc/samba/smb.conf && \
     echo '   printing = bsd' >>/etc/samba/smb.conf && \
