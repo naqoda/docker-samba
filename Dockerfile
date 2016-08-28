@@ -20,6 +20,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     echo '   printing = bsd' >>/etc/samba/smb.conf && \
     echo '   printcap name = /dev/null' >>/etc/samba/smb.conf && \
     echo '   disable spoolss = yes' >>/etc/samba/smb.conf && \
+    echo '   socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=65536 SO_SNDBUF=65536' >>/etc/samba/smb.conf && \
     echo '' >>/etc/samba/smb.conf && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/*
